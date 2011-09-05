@@ -1,0 +1,28 @@
+%html
+  %head
+    %title Flood
+    %script{:type => "text/javascript", :src => "js/jquery-1.5.1.min.js"}
+    %script{:type => "text/javascript", :src => "js/jquery.hotkeys-0.7.9.min.js"}
+    %script{:type => "text/javascript", :src => "js/jquery-ui-1.8.13.custom.min.js"}
+    %link{:type => "text/css", :href => "css/ui-lightness/jquery-ui-1.8.13.custom.css", :rel => "stylesheet"}
+    %link{:type => "text/css", :href => "css/style.css", :rel => "stylesheet"}
+  %body
+    #left
+      #buttons
+        .button.red
+        .button.green
+        .button.blue
+        .button.magenta
+        .button.yellow
+        .button.orange
+      #status
+        Clicks: 
+        %span#clicks
+        <br>
+        Points:
+        %span#points 0
+        %script{:type => "text/javascript", :src => "js/engine.js"}
+    #playfield
+    #highscore
+      .title Highscore
+      .content

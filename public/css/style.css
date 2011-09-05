@@ -1,0 +1,87 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+}
+
+#left {
+	float: left;
+	margin-left: 250px;
+	margin-right: 50px;
+	margin-top: 70px;
+}
+#buttons {
+	width: 150px;
+	height: 100px;
+	border: 2px solid grey;
+	border-radius: 5px;
+	float: left;
+}
+
+#status {
+	float: left;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#playfield {
+	width: 336px;
+	height: 336px;
+	border: 2px solid grey;
+	border-radius: 5px;
+	float:left;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#highscore {
+	width: 150px;
+	height: 250px;
+	border: 2px solid grey;
+	border-radius: 5px;
+	float:left;
+	margin-left: 50px;
+	margin-top: 70px;
+}
+
+#highscore .title {
+	width: 100%;
+	background: lightgrey;
+}
+
+#highscore .record .player{
+	float:left;
+}
+
+.button {
+	float: left;
+	width: 46px;
+	height: 46px;
+	margin: 1px;
+	border: 1px solid black;
+	border-radius: 23px;
+}
+
+.block {
+	float: left;
+	width: 24px;
+	height: 24px;
+}
+.magenta {
+	background: magenta;
+}
+.blue {
+	background: blue;
+}
+.yellow {
+	background: yellow;
+}
+.red {
+	background: red;
+}
+.green {
+	background: green;
+}
+.orange {
+	background: orange;
+}
