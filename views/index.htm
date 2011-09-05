@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<title> RaxGame </title>
+		<style>
+			body {
+				margin: 0px;
+				padding: 0px;
+				text-align: center;
+			}
+
+			#buttons {
+				width: 150px;
+				height: 100px;
+				border: 2px solid grey;
+				border-radius: 5px;
+				margin-left: 250px;
+				margin-top: 100px;
+				float: left;
+			}
+
+			#playfield {
+				width: 336px;
+				height: 336px;
+				border: 2px solid grey;
+				border-radius: 5px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			.button {
+				float: left;
+				width: 46px;
+				height: 46px;
+				margin: 1px;
+				border: 1px solid black;
+				border-radius: 23px;
+			}
+
+			.block {
+				float: left;
+				width: 24px;
+				height: 24px;
+			}
+			.magenta {
+				background: magenta;
+			}
+			.blue {
+				background: blue;
+			}
+			.yellow {
+				background: yellow;
+			}
+			.red {
+				background: red;
+			}
+			.green {
+				background: green;
+			}
+			.orange {
+				background: orange;
+			}
+
+		</style>
+		<script src="js/jquery-1.5.1.min.js"></script>
+		<script src="js/jquery.hotkeys-0.7.9.min.js"></script>
+		<script src="js/jquery-ui-1.8.13.custom.min.js"></script>
+		<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.13.custom.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div id='buttons'>
+			<div class='button red'></div>
+			<div class='button green'></div>
+			<div class='button blue'></div>
+			<div class='button magenta'></div>
+			<div class='button yellow'></div>
+			<div class='button orange'></div>
+		</div>
+		<div id='playfield'></div>
+		<div id='status'>
+			Clicks: <span id='clicks'></span><br>
+			Points: <span id='points'>0</span>
+		</div>
+		<script src="engine.js"></script>
+	</body>
+</html>
