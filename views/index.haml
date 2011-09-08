@@ -4,10 +4,26 @@
     %script{:type => "text/javascript", :src => "js/jquery-1.5.1.min.js"}
     %script{:type => "text/javascript", :src => "js/jquery.hotkeys-0.7.9.min.js"}
     %script{:type => "text/javascript", :src => "js/jquery-ui-1.8.13.custom.min.js"}
+    %script{:type => "text/javascript", :src => "http://connect.facebook.net/en_US/all.js"}
     %link{:type => "text/css", :href => "css/ui-lightness/jquery-ui-1.8.13.custom.css", :rel => "stylesheet"}
     %link{:type => "text/css", :href => "css/style.css", :rel => "stylesheet"}
   %body
     #left
+      #fb-root
+        :javascript
+          FB.init({
+            appId:140824105951140, cookie:true, status:true, xfbml:true});
+          FB.api('/me', function(user){
+            $('#username').html(user.name);
+            $('#userpic').attr('src', 'http://graph.facebook.com/' + user.id + '/picture');
+            $('#profile').data({
+                      'id': user.id,
+                      'name': user.name
+                      });
+            });
+        #profile
+          %img#userpic
+          #username
       #buttons
         .button.red
         .button.green
@@ -16,13 +32,21 @@
         .button.yellow
         .button.orange
       #status
+        #playername
         Clicks: 
         %span#clicks
         <br>
         Points:
         %span#points 0
-        %script{:type => "text/javascript", :src => "js/engine.js"}
+        <br>
+        %span#wingames
+        of
+        %span#games
+        Won(
+        %span#percentage
+        \%)
     #playfield
     #highscore
       .title Highscore
       .content
+    %script{:type => "text/javascript", :src => "js/engine.js"}

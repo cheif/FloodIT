@@ -12,6 +12,22 @@ class Player
 	property :id,		Serial
 	property :name,	String
 
+	def self.status(uid)
+		name = get(uid).name
+		games = Game.all(:uid => uid)
+		wingames = Game.all(:uid => uid, :totalpoints.gt => 0)
+		{'name' => name, 'games' => games.length, 'wingames' => wingames.length}.to_json
+	end
+
+	def self.list
+		raw = all()
+		players = []
+		raw.each{|player|
+			players.push({'id' => player.id, 'name' => player.name})
+		}
+		players.to_json
+	end
+
 end
 
 class Game
@@ -46,7 +62,7 @@ get '/newGame' do
 	board.to_json
 end
 
-get '/saveGame/:uid/:clicks/:totalpoints' do
+get '/endGame/:uid/:clicks/:totalpoints' do
 	# Saves a game
 	@game = Game.create(:uid => params[:uid], :clicks => params[:clicks], :totalpoints => params[:totalpoints], :time => Time.now)
 end
@@ -54,4 +70,14 @@ end
 get '/highscore' do
 	# Loads 10 highest scores
 	Game.highscore
+end
+
+get '/status/:id' do
+	# Return current player status
+	Player.status(params[:id])
+end
+
+get '/players' do
+	# Return list of players
+	Player.list
 end

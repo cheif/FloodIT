@@ -102,18 +102,30 @@ var startGame = function(){
 			$('#highscore .content').append('<div class="record"><span class="player">' + val.player + '</span><span class="score">' + val.score + '</span></div>');
 		});
 	});
+	playerStatus();
+}
+
+var playerStatus = function(){
+	/* Refresh player data */
+	$.getJSON('/status/' + $('#profile').data('id') , function(data){
+		$('#playername').html($('#profile').data('name'));
+		$('#wingames').html(data.wingames);
+		$('#games').html(data.games);
+		$('#percentage').html(Math.round(data.wingames/data.games*100));
+	});
 }
 
 var winFunction = function(){
 	points += Math.pow(2, 26-clicks)*10;
 	$('#points').html(points);
-	$.ajax('/saveGame/1/' + clicks + '/' + points);
+	$.ajax('/endGame/' + $('#profile').data('id') + '/' + clicks + '/' + points);
 	startGame();
 }
 
 var loseFunction = function(){
 	points = 0;
 	$('#points').html(points);
+	$.ajax('/endGame/' + $('#profile').data('id') + '/' + clicks + '/' + points);
 	startGame();
 }
 
@@ -133,10 +145,10 @@ var winCheck = function(){
 	}
 }
 		
-
 var mainLoop = function(){
 	gLoop = setTimeout(mainLoop, 1000/50);
 }
 
 startGame();
+setTimeout(playerStatus, 500);
 mainLoop();
