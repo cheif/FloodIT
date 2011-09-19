@@ -6,7 +6,13 @@ require 'dm-validations'
 require 'dm-migrations'
 require 'dm-timestamps'
 
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/flood.sqlite3")
+configure :production do
+	DataMapper.setup(:default, ENV['DATABASE_URL'])
+end
+configure :development do
+	DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/flood.sqlite3")
+end
+
 class Player
 	include DataMapper::Resource
 	property :id,		Serial
